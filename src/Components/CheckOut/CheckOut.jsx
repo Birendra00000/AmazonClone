@@ -48,7 +48,7 @@ const Checkout = () => {
                         </div>
                         <div>
                           <button
-                            className="text-sm xl:text-base font-semibold rounded text-blue-500 mt-2 mb-1 cursor-pointer"
+                            className="text-sm xl:text-base font-semibold rounded text-white mt-2 mb-1 cursor-pointer px-3 py-1 bg-red-500"
                             onClick={() => dispatch(removeFromCart(Product.id))}
                           >
                             Delete

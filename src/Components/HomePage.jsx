@@ -3,6 +3,7 @@ import Carousel from "./Carousel/Craousel";
 import HomePageCard from "./HomePageCard/HomePageCard";
 import CategoryCarousel from "./CategoryCarousel/CategoryCarousel";
 import ProductCatourel from "./ProductCarousel/ProductCarousel";
+import CategoryItems from "./CategoryCarousel/CategoryItems";
 
 const HomePage = () => {
   return (

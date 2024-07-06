@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import "./index.css";
-import "swiper/css";
 import "swiper/css/navigation";
 import { useNavigate, createSearchParams } from "react-router-dom";
+import "./index.css";
 
 const CarouselCategory = () => {
   const Navigate = useNavigate();
@@ -19,17 +18,14 @@ const CarouselCategory = () => {
 
   return (
     <div className="bg-white m-3">
-      <div className="text-2xl font-semibold p-3">Shop by Category</div>
+      <div className=" abcxyz text-2xl font-semibold p-3">Shop by Category</div>
       <Swiper
         slidesPerView={5}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation]}
       >
-        <SwiperSlide
-          onClick={() => searchCategory("Deals")}
-          className=" cursor-pointer"
-        >
+        <SwiperSlide onClick={() => searchCategory("Deals")} className=" abc">
           <img
             src={"../images/category_0.jpg"}
             alt="Deal category"

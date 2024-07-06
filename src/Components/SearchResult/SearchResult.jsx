@@ -32,23 +32,21 @@ const SearchResult = () => {
   }, [searchParams]);
 
   return (
-    <div className="">
+    <div className="w-full">
       {Product &&
-        Product.map((Product, key) => {
+        Product.map((Product) => {
           return (
-            <Link key={key} to={`/product/${Product.id}`}>
-              <div className="">
-                <div className="">
+            <Link key={Product.id} to={`/product/${Product.id}`}>
+              <div className="w-full flex justify-center ">
+                <div className="w-[300px]">
                   <img
-                    className="m-auto"
+                    className=" w-full"
                     src={Product.image_small}
                     alt="Search result product"
                   />
-                </div>
-                <div className=" ">
+
                   <div className="">
                     <ProductDetails Product={Product} ratings={true} />
-                    <div className="">{GB_CURRENCY.format(Product.price)}</div>
                   </div>
                 </div>
               </div>

@@ -6,6 +6,7 @@ const ProductRating = (props) => {
 
   return (
     <div className="flex">
+      <span className="ml-3 text-blue-500">{ratingNumber} Ratings:</span>
       {Array.from({ length: starNumber }, (_, i) => (
         <StarIcon
           key={i}
@@ -15,7 +16,6 @@ const ProductRating = (props) => {
       {Array.from({ length: 5 - starNumber }, (_, i) => (
         <StarIcon key={i} className="stroke-[#F1B61F] h-[20px]" />
       ))}
-      <span className="ml-3 text-blue-500">{ratingNumber} ratings</span>
     </div>
   );
 };

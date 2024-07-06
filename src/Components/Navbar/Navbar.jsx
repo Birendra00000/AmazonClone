@@ -5,14 +5,24 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { ApiCall } from "../../utilities/ApiCall";
 import { useNavigate, createSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeFromCart,
+  decrementInCart,
+  incrementInCart,
+} from "../../Redux/CartSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const itemsNumber = useSelector((state) => state.cart.productsNumber);
+
   const [suggestions, setSuggestions] = useState("");
   const [searchitem, setSearchitem] = useState("");
   const [category, setCategory] = useState("All");
 
   const handlesSearch = () => {
-    ApiCall(`data/suggestions.json`).then((suggestionsResult) => {
+    ApiCall(`data/searchItems.json`).then((suggestionsResult) => {
       setSuggestions(suggestionsResult);
     });
   };
@@ -35,6 +45,7 @@ const Navbar = () => {
     setSearchitem("");
     setCategory("All");
   };
+
   return (
     <>
       <div className="Navbar--maincontainer">
@@ -52,8 +63,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="secondbar">
-          <div className="second-logobar relative">
+        <div className="secondbar flex justify-center">
+          <div className="second-logobar relative w-[80%]">
             <Link to="/">
               <div className="img-logo">
                 <img
@@ -74,18 +85,21 @@ const Navbar = () => {
                   onChange={(event) => setSearchitem(event.target.value)}
                 />
               </div>
-              <div className="search--logo " onClick={onHandleSubmit}>
+              {/* <div className="search--logo " onChange={onHandleSubmit}>
                 <SearchResult className="absoulte top-5 left-11" />
-              </div>
+              </div> */}
             </div>
             <Link to="/checkout">
-              <div className="cart--icon">
+              <div className="cart--icon ">
                 <AiOutlineShoppingCart
                   size="2.8rem"
                   color=""
                   className="cart-logo"
                 />
               </div>
+              <span className="absolute top-[5px] right-[190px]">
+                {itemsNumber}
+              </span>
             </Link>
           </div>
         </div>
@@ -94,7 +108,7 @@ const Navbar = () => {
         </div>
       </div>
       {suggestions && (
-        <div className="bg-white text-black w-full z-40 absolute left-20 h-18 font-bold">
+        <div className="bg-slate-300 text-black w-[46%] z-40 absolute left-[21%] h-18 font-bold">
           {suggestions
             .filter((suggestion) => {
               const currentSearchitem = searchitem.toLowerCase();
@@ -107,12 +121,15 @@ const Navbar = () => {
             })
             .slice(0, 10)
             .map((suggestion) => (
-              <div
-                key={suggestion.id}
-                onClick={() => setSearchitem(suggestion.title)}
-              >
-                {suggestion.title}
-              </div>
+              <Link to={`/product/${suggestion.id}`}>
+                <div
+                  className=" p-2 "
+                  key={suggestion.id}
+                  onClick={() => setSearchitem(suggestion.title)}
+                >
+                  {suggestion.title}
+                </div>
+              </Link>
             ))}
         </div>
       )}

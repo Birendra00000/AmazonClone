@@ -8,7 +8,7 @@ import {
   incrementInCart,
 } from "../../Redux/CartSlice";
 
-const Checkout = () => {
+const CheckOut = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
   const itemsNumber = useSelector((state) => state.cart.productsNumber);
@@ -110,4 +110,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckOut;

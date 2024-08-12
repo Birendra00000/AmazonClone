@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage, SearchResult, ProductPage } from "./Components";
 import Navbar from "./Components/Navbar/Navbar";
 import Checkout from "./Components/Checkout/CheckOut";
-
 function App() {
   return (
     <>

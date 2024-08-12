@@ -13,7 +13,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 export default function Carousel() {
   return (
     <>
-      <div className="h-[500px] bg-white">
+      <div className="  bg-white">
         <Swiper
           navigation={true}
           modules={[Navigation, Autoplay]}
@@ -26,11 +26,15 @@ export default function Carousel() {
           <SwiperSlide>
             <img src="../../images/carousel_2.jpg" />
           </SwiperSlide>
-          <SwiperSlide className="bg-black">
-            <video controls muted="muted">
-              <source src="../../images/carousel_vid.mp4" type="video/mp4" />
+          {/* <SwiperSlide className="bg-black">
+            <video controls muted="muted" className="h-full">
+              <source
+                src="../../images/carousel_vid.mp4"
+                type="video/mp4"
+                className="h-full"
+              />
             </video>
-          </SwiperSlide>
+          </SwiperSlide> */}
           <SwiperSlide>
             <img src="../../images/carousel_3.jpg" />
           </SwiperSlide>

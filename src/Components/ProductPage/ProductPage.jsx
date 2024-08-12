@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ApiCall } from "../../utilities/ApiCall";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import { GB_CURRENCY } from "../../utilities/Api_Url";
@@ -28,26 +27,28 @@ const ProductPage = () => {
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [id]);
 
   if (!Product?.title) return <h1>Loading...</h1>;
 
   return (
     Product && (
-      <div className="h-screen bg-amazonclone-background  ">
-        <div className=" min-w-1000px">
-          <div className="grid grid-cols-10 gap-2">
-            <div className="col-span-3 bg-white p-6 m-auto">
-              <img src={`${Product.image}`} />
+      <div className="h-screen bg-amazonclone-background p-4">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="bg-white p-6 w-full flex justify-center ">
+              <img
+                src={`${Product.image}`}
+                alt={Product.title}
+                className="w-auto h-[300px] object-cover rounded-md"
+              />
             </div>
-            <div className="col-span-5 bg-white">
-              <div>
-                <ProductDetails Product={Product} ratings={true} />
-              </div>
-              <div className="m-4 text-lg">{Product.description}</div>
+            <div className="bg-white p-6 col-span-1 md:col-span-2 lg:col-span-1">
+              <ProductDetails Product={Product} ratings={true} />
+              <div className="mt-4 text-lg">{Product.description}</div>
             </div>
 
-            <div className="col-span-2 bg-white p-5">
+            <div className="bg-white p-5">
               <div className="text-lg xl:text-xl font-bold text-right text-red-600">
                 {GB_CURRENCY.format(Product.price)}
               </div>
@@ -66,7 +67,7 @@ const ProductPage = () => {
               <div className="text-base xl:text-base text-green-800 mt-1">
                 In Stock
               </div>
-              <div className="text-lg xl:text-lg mt-1 text-grey-500 ">
+              <div className="text-lg xl:text-lg mt-1 text-gray-500 ">
                 Quantity:
                 <select
                   className="p-1 bg-white border rounded-md focus:border-indigo-600 ml-1"
@@ -80,7 +81,7 @@ const ProductPage = () => {
               <Link to="/checkout">
                 <div className="button">
                   <button
-                    className="mt-3 w-[100%] text-lg bg-red-800 text-white p-2 border rounded-md hover:bg-green-800"
+                    className="mt-3 w-full text-lg bg-red-800 text-white p-2 border rounded-md hover:bg-green-800"
                     onClick={() => dispatch(addToCart(addQuantityToProduct()))}
                   >
                     Add to Cart

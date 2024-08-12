@@ -38,3 +38,35 @@ body {
   height: 100%;
   object-fit: cover;
 }
+/* Ensure Swiper container is responsive */
+.mySwiper {
+  width: 100%;
+  height: auto; /* Adjust height as needed */
+}
+
+/* Make images and videos responsive */
+.mySwiper img,
+.mySwiper video {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Adjust to cover container while maintaining aspect ratio */
+}
+
+/* Optionally, adjust height for different screen sizes */
+@media (max-width: 1200px) {
+  .mySwiper {
+    height: 400px; /* Adjust based on your design */
+  }
+}
+
+@media (max-width: 768px) {
+  .mySwiper {
+    height: 300px; /* Adjust based on your design */
+  }
+}
+
+@media (max-width: 480px) {
+  .mySwiper {
+    height: 200px; /* Adjust based on your design */
+  }
+}

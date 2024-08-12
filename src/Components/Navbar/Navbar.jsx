@@ -6,15 +6,8 @@ import { useState, useEffect } from "react";
 import { ApiCall } from "../../utilities/ApiCall";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  removeFromCart,
-  decrementInCart,
-  incrementInCart,
-} from "../../Redux/CartSlice";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-
   const itemsNumber = useSelector((state) => state.cart.productsNumber);
 
   const [suggestions, setSuggestions] = useState("");
@@ -64,7 +57,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="secondbar flex justify-center">
-          <div className="second-logobar relative w-[80%]">
+          <div className="second-logobar relative w-[80%] flex items-center gap-3">
             <Link to="/">
               <div className="img-logo">
                 <img
@@ -75,7 +68,7 @@ const Navbar = () => {
               </div>
             </Link>
             <div className="main--searh--card relative">
-              <div className="search--bar">
+              <div className="search--bar w-full">
                 <input
                   type="search"
                   className="search--item"
@@ -89,15 +82,15 @@ const Navbar = () => {
                 <SearchResult className="absoulte top-5 left-11" />
               </div> */}
             </div>
-            <Link to="/checkout">
+            <Link to="/checkout" className=" flex justify-center items-center">
               <div className="cart--icon ">
                 <AiOutlineShoppingCart
                   size="2.8rem"
                   color=""
-                  className="cart-logo"
+                  className="cart-logo "
                 />
               </div>
-              <span className="absolute top-[5px] right-[190px]">
+              <span className="relative  top-[-10px] ight-[170px]">
                 {itemsNumber}
               </span>
             </Link>

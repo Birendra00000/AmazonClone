@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className="main--app--wrapper bg-amazonclone-background ">
       <div className="secons--wrapper "></div>
       <Carousel />
-      <div className="grid grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         <HomePageCard
           title={"we have a suprise for you"}
           img={"../images/home_grid_1.jpg"}
